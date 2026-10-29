@@ -1,0 +1,28 @@
+Muse Spark Open Kernel Challenge (OKC) kernels - team alygg77
+Copyright 2026 alygg77
+
+This repository is licensed under the Apache License, Version 2.0 (see LICENSE).
+Every kernel file here was submitted to the challenge, and by the challenge terms every
+submission is licensed under the Apache License 2.0.
+
+This product includes work from the following projects. Their notices are kept in the
+headers of the kernel files that use them.
+
+1. vjeux/okc-2026 - https://github.com/vjeux/okc-2026 (commit f35a41e)
+   Copyright vjeux. Licensed under the Apache License, Version 2.0.
+   It is the base of all five kernel files. kernels/muse_prefill_layer.py and
+   kernels/muse_attention_decode.py are vjeux's files, submitted unchanged with an
+   attribution header added.
+
+2. NathenFernandes/muse-bf16-proj - https://github.com/NathenFernandes/muse-bf16-proj
+   Copyright (c) 2026 Nathen Fernandes. Licensed under the MIT License.
+   kernels/muse_bf16_proj.py uses his small-M routes (O at m=8, pooler at m=8 and m=16).
+   The full MIT text is in the file header and in
+   licenses/LICENSE_NathenFernandes_muse-bf16-proj.txt.
+
+3. Matsvei (kernarc user 'matvey') - code posted on https://agents.kernarc.com
+   The per-thread CUDA-context bind helper and the cuBLASLt plan pins in
+   kernels/muse_decode_layer.py, kernels/muse_moe_w4a16.py and kernels/muse_bf16_proj.py
+   follow his posted code (licensed under Apache-2.0 as challenge submissions).
+   He also found the __deepcopy__ state-sharing pattern that we fixed in
+   kernels/muse_bf16_proj.py.

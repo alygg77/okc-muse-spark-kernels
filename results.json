@@ -1,0 +1,1002 @@
+{
+ "challenge": "Muse Spark Open Kernel Challenge (OKC)",
+ "site": "https://openkernelchallenge.dev",
+ "gpu": "NVIDIA H200 SXM",
+ "team": "alygg77",
+ "ranks_read_at": "2026-10-29 20:54 UTC",
+ "note": "Leaderboard positions are provisional; final positions come from the organizers' reruns.",
+ "boards": {
+  "muse_decode_layer": {
+   "rank": 40,
+   "entries": 989,
+   "speedup": 2.2058,
+   "speedup_ci95": [
+    2.1727,
+    2.2389
+   ],
+   "score_us": 10254.9,
+   "baseline_us": 22620.3,
+   "rank_50_speedup": 2.188524685345275,
+   "job": "a61afb9687f14eff",
+   "kernel_file": "kernels/muse_decode_layer.py",
+   "kernel_sha256": "8f17613bafb2369152f2739638bf8f6dfb193f6a79dbad3e6d25795cf1ebaf4a",
+   "origin": "our work on vjeux's base (Apache-2.0), with code following Matsvei (kernarc 'matvey')",
+   "shapes": [
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "sliding",
+      "load": "decode 1",
+      "page": 1,
+      "repeats": 60,
+      "weight": 46
+     },
+     "baseline_us": 173.088,
+     "ours_us": 69.332,
+     "speedup": 2.4965
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "full",
+      "load": "decode 1",
+      "page": 1,
+      "repeats": 60,
+      "weight": 16
+     },
+     "baseline_us": 181.936,
+     "ours_us": 74.427,
+     "speedup": 2.4445
+    },
+    {
+     "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "sliding",
+      "load": "decode 16",
+      "page": 1,
+      "spread": "agentic",
+      "weight": 46
+     },
+     "baseline_us": 266.496,
+     "ours_us": 129.354,
+     "speedup": 2.0602
+    },
+    {
+     "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "full",
+      "load": "decode 16",
+      "page": 1,
+      "spread": "agentic",
+      "weight": 16
+     },
+     "baseline_us": 432.256,
+     "ours_us": 203.962,
+     "speedup": 2.1193
+    },
+    {
+     "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "sliding",
+      "load": "decode 32",
+      "page": 1,
+      "spread": "agentic",
+      "weight": 46
+     },
+     "baseline_us": 261.04,
+     "ours_us": 149.129,
+     "speedup": 1.7504
+    },
+    {
+     "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "full",
+      "load": "decode 32",
+      "page": 1,
+      "spread": "agentic",
+      "weight": 16
+     },
+     "baseline_us": 616.208,
+     "ours_us": 304.338,
+     "speedup": 2.0247
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "sliding",
+      "load": "verify 1",
+      "page": 1,
+      "q_len": 8,
+      "weight": 46
+     },
+     "baseline_us": 268.992,
+     "ours_us": 110.125,
+     "speedup": 2.4426
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "full",
+      "load": "verify 1",
+      "page": 1,
+      "q_len": 8,
+      "weight": 16
+     },
+     "baseline_us": 281.216,
+     "ours_us": 117.16,
+     "speedup": 2.4003
+    },
+    {
+     "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "sliding",
+      "load": "verify 16",
+      "page": 1,
+      "q_len": 8,
+      "spread": "agentic",
+      "weight": 46
+     },
+     "baseline_us": 527.472,
+     "ours_us": 244.169,
+     "speedup": 2.1603
+    },
+    {
+     "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "full",
+      "load": "verify 16",
+      "page": 1,
+      "q_len": 8,
+      "spread": "agentic",
+      "weight": 16
+     },
+     "baseline_us": 693.568,
+     "ours_us": 327.809,
+     "speedup": 2.1158
+    },
+    {
+     "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "sliding",
+      "load": "verify 32",
+      "page": 1,
+      "q_len": 8,
+      "spread": "agentic",
+      "weight": 46
+     },
+     "baseline_us": 704.72,
+     "ours_us": 303.85,
+     "speedup": 2.3193
+    },
+    {
+     "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "full",
+      "load": "verify 32",
+      "page": 1,
+      "q_len": 8,
+      "spread": "agentic",
+      "weight": 16
+     },
+     "baseline_us": 1040.112,
+     "ours_us": 464.097,
+     "speedup": 2.2412
+    }
+   ]
+  },
+  "muse_moe_w4a16": {
+   "rank": 41,
+   "entries": 1122,
+   "speedup": 2.4015,
+   "speedup_ci95": [
+    2.3655,
+    2.4376
+   ],
+   "score_us": 5600.0,
+   "baseline_us": 13448.5,
+   "rank_50_speedup": 2.3867439376317225,
+   "job": "e1bcad5a55cd4a29",
+   "kernel_file": "kernels/muse_moe_w4a16.py",
+   "kernel_sha256": "b33070898927b7b92df6c7a2515f9c02dd12723c43ca63682fa164e915dd4281",
+   "origin": "our work on vjeux's base (Apache-2.0), with code following Matsvei (kernarc 'matvey')",
+   "shapes": [
+    {
+     "case": {
+      "bs": 1,
+      "load": "decode 1",
+      "sharding": "ep8",
+      "weight": 60
+     },
+     "baseline_us": 77.904,
+     "ours_us": 24.636,
+     "speedup": 3.1622
+    },
+    {
+     "case": {
+      "bs": 16,
+      "load": "decode 16",
+      "sharding": "ep8",
+      "weight": 60
+     },
+     "baseline_us": 188.88,
+     "ours_us": 92.266,
+     "speedup": 2.0471
+    },
+    {
+     "case": {
+      "bs": 32,
+      "load": "decode 32",
+      "sharding": "ep8",
+      "weight": 60
+     },
+     "baseline_us": 206.992,
+     "ours_us": 123.958,
+     "speedup": 1.6698
+    },
+    {
+     "case": {
+      "bs": 8,
+      "load": "verify 1",
+      "sharding": "ep8",
+      "weight": 60
+     },
+     "baseline_us": 142.384,
+     "ours_us": 63.609,
+     "speedup": 2.2384
+    },
+    {
+     "case": {
+      "bs": 128,
+      "load": "verify 16",
+      "sharding": "ep8",
+      "weight": 60
+     },
+     "baseline_us": 468.96,
+     "ours_us": 175.235,
+     "speedup": 2.6762
+    },
+    {
+     "case": {
+      "bs": 256,
+      "load": "verify 32",
+      "sharding": "ep8",
+      "weight": 60
+     },
+     "baseline_us": 615.504,
+     "ours_us": 207.761,
+     "speedup": 2.9626
+    }
+   ]
+  },
+  "muse_bf16_proj": {
+   "rank": 75,
+   "entries": 1401,
+   "speedup": 1.5502,
+   "speedup_ci95": [
+    1.5269,
+    1.5734
+   ],
+   "score_us": 3116.3,
+   "baseline_us": 4830.8,
+   "rank_50_speedup": 1.5603948499169407,
+   "job": "f07235a6ca8a46e2",
+   "kernel_file": "kernels/muse_bf16_proj.py",
+   "kernel_sha256": "290a86ab852c851ad0307002a55a432a1ffce44d7ef51d529e19284193647b90",
+   "origin": "our work on vjeux's base (Apache-2.0) with Nathen Fernandes' routes (MIT) and Matsvei's code",
+   "shapes": [
+    {
+     "case": {
+      "layer": "qkv_gate",
+      "load": "decode 1",
+      "m": 1,
+      "weight": 62
+     },
+     "baseline_us": 13.824,
+     "ours_us": 8.829,
+     "speedup": 1.5658
+    },
+    {
+     "case": {
+      "layer": "o",
+      "load": "decode 1",
+      "m": 1,
+      "weight": 62
+     },
+     "baseline_us": 7.04,
+     "ours_us": 5.235,
+     "speedup": 1.3447
+    },
+    {
+     "case": {
+      "layer": "pooler",
+      "load": "decode 1",
+      "m": 1,
+      "weight": 62
+     },
+     "baseline_us": 21.248,
+     "ours_us": 13.358,
+     "speedup": 1.5907
+    },
+    {
+     "case": {
+      "layer": "unpooler",
+      "load": "decode 1",
+      "m": 1,
+      "weight": 62
+     },
+     "baseline_us": 7.008,
+     "ours_us": 3.583,
+     "speedup": 1.9559
+    },
+    {
+     "case": {
+      "layer": "router",
+      "load": "decode 1",
+      "m": 1,
+      "weight": 62
+     },
+     "baseline_us": 10.496,
+     "ours_us": 3.693,
+     "speedup": 2.8423
+    },
+    {
+     "case": {
+      "layer": "qkv_gate",
+      "load": "decode 16",
+      "m": 16,
+      "weight": 62
+     },
+     "baseline_us": 13.824,
+     "ours_us": 9.653,
+     "speedup": 1.432
+    },
+    {
+     "case": {
+      "layer": "o",
+      "load": "decode 16",
+      "m": 16,
+      "weight": 62
+     },
+     "baseline_us": 6.72,
+     "ours_us": 5.447,
+     "speedup": 1.2337
+    },
+    {
+     "case": {
+      "layer": "pooler",
+      "load": "decode 16",
+      "m": 16,
+      "weight": 62
+     },
+     "baseline_us": 20.944,
+     "ours_us": 13.542,
+     "speedup": 1.5466
+    },
+    {
+     "case": {
+      "layer": "unpooler",
+      "load": "decode 16",
+      "m": 16,
+      "weight": 62
+     },
+     "baseline_us": 18.56,
+     "ours_us": 13.637,
+     "speedup": 1.361
+    },
+    {
+     "case": {
+      "layer": "router",
+      "load": "decode 16",
+      "m": 16,
+      "weight": 62
+     },
+     "baseline_us": 14.816,
+     "ours_us": 4.505,
+     "speedup": 3.2891
+    },
+    {
+     "case": {
+      "layer": "qkv_gate",
+      "load": "decode 32",
+      "m": 32,
+      "weight": 62
+     },
+     "baseline_us": 14.24,
+     "ours_us": 10.781,
+     "speedup": 1.3209
+    },
+    {
+     "case": {
+      "layer": "o",
+      "load": "decode 32",
+      "m": 32,
+      "weight": 62
+     },
+     "baseline_us": 7.072,
+     "ours_us": 6.087,
+     "speedup": 1.1617
+    },
+    {
+     "case": {
+      "layer": "pooler",
+      "load": "decode 32",
+      "m": 32,
+      "weight": 62
+     },
+     "baseline_us": 21.824,
+     "ours_us": 14.874,
+     "speedup": 1.4673
+    },
+    {
+     "case": {
+      "layer": "unpooler",
+      "load": "decode 32",
+      "m": 32,
+      "weight": 62
+     },
+     "baseline_us": 18.624,
+     "ours_us": 14.46,
+     "speedup": 1.288
+    },
+    {
+     "case": {
+      "layer": "router",
+      "load": "decode 32",
+      "m": 32,
+      "weight": 62
+     },
+     "baseline_us": 15.136,
+     "ours_us": 5.236,
+     "speedup": 2.891
+    },
+    {
+     "case": {
+      "layer": "qkv_gate",
+      "load": "verify 1",
+      "m": 8,
+      "weight": 62
+     },
+     "baseline_us": 14.176,
+     "ours_us": 9.784,
+     "speedup": 1.4489
+    },
+    {
+     "case": {
+      "layer": "o",
+      "load": "verify 1",
+      "m": 8,
+      "weight": 62
+     },
+     "baseline_us": 6.944,
+     "ours_us": 5.516,
+     "speedup": 1.2588
+    },
+    {
+     "case": {
+      "layer": "pooler",
+      "load": "verify 1",
+      "m": 8,
+      "weight": 62
+     },
+     "baseline_us": 21.2,
+     "ours_us": 13.55,
+     "speedup": 1.5646
+    },
+    {
+     "case": {
+      "layer": "unpooler",
+      "load": "verify 1",
+      "m": 8,
+      "weight": 62
+     },
+     "baseline_us": 6.96,
+     "ours_us": 4.111,
+     "speedup": 1.6929
+    },
+    {
+     "case": {
+      "layer": "router",
+      "load": "verify 1",
+      "m": 8,
+      "weight": 62
+     },
+     "baseline_us": 26.544,
+     "ours_us": 4.377,
+     "speedup": 6.0648
+    },
+    {
+     "case": {
+      "layer": "qkv_gate",
+      "load": "verify 16",
+      "m": 128,
+      "weight": 62
+     },
+     "baseline_us": 16.864,
+     "ours_us": 13.793,
+     "speedup": 1.2226
+    },
+    {
+     "case": {
+      "layer": "o",
+      "load": "verify 16",
+      "m": 128,
+      "weight": 62
+     },
+     "baseline_us": 7.36,
+     "ours_us": 6.963,
+     "speedup": 1.057
+    },
+    {
+     "case": {
+      "layer": "pooler",
+      "load": "verify 16",
+      "m": 128,
+      "weight": 62
+     },
+     "baseline_us": 25.648,
+     "ours_us": 19.936,
+     "speedup": 1.2865
+    },
+    {
+     "case": {
+      "layer": "unpooler",
+      "load": "verify 16",
+      "m": 128,
+      "weight": 62
+     },
+     "baseline_us": 20.0,
+     "ours_us": 19.074,
+     "speedup": 1.0485
+    },
+    {
+     "case": {
+      "layer": "router",
+      "load": "verify 16",
+      "m": 128,
+      "weight": 62
+     },
+     "baseline_us": 16.16,
+     "ours_us": 5.768,
+     "speedup": 2.8018
+    },
+    {
+     "case": {
+      "layer": "qkv_gate",
+      "load": "verify 32",
+      "m": 256,
+      "weight": 62
+     },
+     "baseline_us": 20.016,
+     "ours_us": 17.266,
+     "speedup": 1.1593
+    },
+    {
+     "case": {
+      "layer": "o",
+      "load": "verify 32",
+      "m": 256,
+      "weight": 62
+     },
+     "baseline_us": 9.504,
+     "ours_us": 9.259,
+     "speedup": 1.0264
+    },
+    {
+     "case": {
+      "layer": "pooler",
+      "load": "verify 32",
+      "m": 256,
+      "weight": 62
+     },
+     "baseline_us": 31.584,
+     "ours_us": 24.355,
+     "speedup": 1.2968
+    },
+    {
+     "case": {
+      "layer": "unpooler",
+      "load": "verify 32",
+      "m": 256,
+      "weight": 62
+     },
+     "baseline_us": 24.256,
+     "ours_us": 23.201,
+     "speedup": 1.0455
+    },
+    {
+     "case": {
+      "layer": "router",
+      "load": "verify 32",
+      "m": 256,
+      "weight": 62
+     },
+     "baseline_us": 17.76,
+     "ours_us": 7.346,
+     "speedup": 2.4176
+    }
+   ]
+  },
+  "muse_prefill_layer": {
+   "rank": 34,
+   "entries": 648,
+   "speedup": 1.8167,
+   "speedup_ci95": [
+    1.7895,
+    1.844
+   ],
+   "score_us": 213241.0,
+   "baseline_us": 387403.9,
+   "rank_50_speedup": 1.8022166954150454,
+   "job": "7f87198d13a34650",
+   "kernel_file": "kernels/muse_prefill_layer.py",
+   "kernel_sha256": "ced91e7e5f3198383fec54cf262a872f5ccad5cdb9dfe201c9fa1c84c605dd20",
+   "origin": "vjeux's public file, submitted unchanged (attribution header added)",
+   "shapes": [
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "sliding",
+      "load": "turn 1",
+      "page": 1,
+      "q_len": 753,
+      "repeats": 6,
+      "weight": 46
+     },
+     "baseline_us": 1134.784,
+     "ours_us": 585.113,
+     "speedup": 1.9394
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "full",
+      "load": "turn 1",
+      "page": 1,
+      "q_len": 753,
+      "repeats": 6,
+      "weight": 16
+     },
+     "baseline_us": 1488.304,
+     "ours_us": 913.017,
+     "speedup": 1.6301
+    },
+    {
+     "case": {
+      "batch": 4,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "sliding",
+      "load": "turn 4",
+      "page": 1,
+      "q_len": 753,
+      "repeats": 6,
+      "weight": 46
+     },
+     "baseline_us": 3379.424,
+     "ours_us": 1785.241,
+     "speedup": 1.893
+    },
+    {
+     "case": {
+      "batch": 4,
+      "ctx": 80000,
+      "dist": "soft",
+      "layer": "full",
+      "load": "turn 4",
+      "page": 1,
+      "q_len": 753,
+      "repeats": 6,
+      "weight": 16
+     },
+     "baseline_us": 4934.944,
+     "ours_us": 3134.266,
+     "speedup": 1.5745
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 0,
+      "dist": "soft",
+      "layer": "full",
+      "load": "first turn",
+      "page": 1,
+      "q_len": 16384,
+      "repeats": 6,
+      "weight": 16
+     },
+     "baseline_us": 17688.192,
+     "ours_us": 9426.503,
+     "speedup": 1.8764
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 32768,
+      "dist": "soft",
+      "layer": "sliding",
+      "load": "first turn",
+      "page": 1,
+      "q_len": 16384,
+      "repeats": 6,
+      "weight": 138
+     },
+     "baseline_us": 17043.28,
+     "ours_us": 8879.561,
+     "speedup": 1.9194
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 32768,
+      "dist": "soft",
+      "layer": "full",
+      "load": "first turn",
+      "page": 1,
+      "q_len": 16384,
+      "repeats": 6,
+      "weight": 16
+     },
+     "baseline_us": 21117.584,
+     "ours_us": 12402.683,
+     "speedup": 1.7027
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 65536,
+      "dist": "soft",
+      "layer": "full",
+      "load": "first turn",
+      "page": 1,
+      "q_len": 16384,
+      "repeats": 6,
+      "weight": 16
+     },
+     "baseline_us": 24177.552,
+     "ours_us": 15194.824,
+     "speedup": 1.5912
+    }
+   ]
+  },
+  "muse_attention_decode": {
+   "rank": 46,
+   "entries": 1077,
+   "speedup": 2.653,
+   "speedup_ci95": [
+    2.6132,
+    2.6928
+   ],
+   "score_us": 1419.6,
+   "baseline_us": 3766.3,
+   "rank_50_speedup": 2.646901489191321,
+   "job": "1c8d81a0dbd94ee0",
+   "kernel_file": "kernels/muse_attention_decode.py",
+   "kernel_sha256": "e6d929d40e6cff8aa82270a423fca24dfccad64b6a82428db9c3377b661bf124",
+   "origin": "vjeux's public file, submitted unchanged (attribution header added)",
+   "shapes": [
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 80000,
+      "dist": "soft",
+      "heads": "tp8",
+      "layer": "sliding",
+      "load": "decode 1",
+      "page": 1,
+      "weight": 46
+     },
+     "baseline_us": 20.752,
+     "ours_us": 5.186,
+     "speedup": 4.0015
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 80000,
+      "dist": "coherent",
+      "heads": "tp8",
+      "layer": "full",
+      "load": "decode 1",
+      "page": 1,
+      "weight": 16
+     },
+     "baseline_us": 31.648,
+     "ours_us": 10.951,
+     "speedup": 2.8899
+    },
+    {
+     "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "dist": "soft",
+      "heads": "tp8",
+      "layer": "sliding",
+      "load": "decode 16",
+      "page": 1,
+      "spread": "agentic",
+      "weight": 46
+     },
+     "baseline_us": 27.152,
+     "ours_us": 7.908,
+     "speedup": 3.4337
+    },
+    {
+     "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "dist": "coherent",
+      "heads": "tp8",
+      "layer": "full",
+      "load": "decode 16",
+      "page": 1,
+      "spread": "agentic",
+      "weight": 16
+     },
+     "baseline_us": 202.016,
+     "ours_us": 83.654,
+     "speedup": 2.4149
+    },
+    {
+     "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "dist": "soft",
+      "heads": "tp8",
+      "layer": "sliding",
+      "load": "decode 32",
+      "page": 1,
+      "spread": "agentic",
+      "weight": 46
+     },
+     "baseline_us": 31.808,
+     "ours_us": 9.701,
+     "speedup": 3.279
+    },
+    {
+     "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "dist": "coherent",
+      "heads": "tp8",
+      "layer": "full",
+      "load": "decode 32",
+      "page": 1,
+      "spread": "agentic",
+      "weight": 16
+     },
+     "baseline_us": 387.328,
+     "ours_us": 159.933,
+     "speedup": 2.4218
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 80000,
+      "dist": "soft",
+      "heads": "tp8",
+      "layer": "sliding",
+      "load": "verify 1",
+      "page": 1,
+      "q_len": 8,
+      "weight": 46
+     },
+     "baseline_us": 23.232,
+     "ours_us": 6.774,
+     "speedup": 3.4296
+    },
+    {
+     "case": {
+      "batch": 1,
+      "ctx": 80000,
+      "dist": "coherent",
+      "heads": "tp8",
+      "layer": "full",
+      "load": "verify 1",
+      "page": 1,
+      "q_len": 8,
+      "weight": 16
+     },
+     "baseline_us": 36.576,
+     "ours_us": 14.25,
+     "speedup": 2.5667
+    },
+    {
+     "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "dist": "soft",
+      "heads": "tp8",
+      "layer": "sliding",
+      "load": "verify 16",
+      "page": 1,
+      "q_len": 8,
+      "spread": "agentic",
+      "weight": 46
+     },
+     "baseline_us": 29.904,
+     "ours_us": 11.773,
+     "speedup": 2.54
+    },
+    {
+     "case": {
+      "batch": 16,
+      "ctx": 80000,
+      "dist": "coherent",
+      "heads": "tp8",
+      "layer": "full",
+      "load": "verify 16",
+      "page": 1,
+      "q_len": 8,
+      "spread": "agentic",
+      "weight": 16
+     },
+     "baseline_us": 206.976,
+     "ours_us": 99.983,
+     "speedup": 2.0701
+    },
+    {
+     "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "dist": "soft",
+      "heads": "tp8",
+      "layer": "sliding",
+      "load": "verify 32",
+      "page": 1,
+      "q_len": 8,
+      "spread": "agentic",
+      "weight": 46
+     },
+     "baseline_us": 34.944,
+     "ours_us": 14.816,
+     "speedup": 2.3586
+    },
+    {
+     "case": {
+      "batch": 32,
+      "ctx": 80000,
+      "dist": "coherent",
+      "heads": "tp8",
+      "layer": "full",
+      "load": "verify 32",
+      "page": 1,
+      "q_len": 8,
+      "spread": "agentic",
+      "weight": 16
+     },
+     "baseline_us": 392.464,
+     "ours_us": 182.135,
+     "speedup": 2.1548
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,37 @@
+# alygg77 OKC kernels
+
+> Open-source H200 CUDA kernels by team alygg77 for the Muse Spark Open Kernel Challenge (OKC,
+> https://openkernelchallenge.dev): one self-contained Python + inline CUDA file per board, with judge
+> results per shape, measured H200 facts and negative results. Base: vjeux/okc-2026 (Apache-2.0).
+> License: Apache-2.0 (Nathen Fernandes' parts in muse_bf16_proj stay MIT).
+
+Model: Meta Muse Spark Open, MoE with 256 experts (top-8, width 4096), NVFP4 expert weights, BF16
+projections, FP32 router, FP8 paged KV cache, sliding (2,048-token) and full attention layers, served by
+SGLang under TP8/EP8 on NVIDIA H200 SXM (sm_90a). The judge times CUDA-graph replays from a cold L2
+against SGLang's own kernels.
+
+## Results (provisional leaderboard, 2026-10-29 20:54 UTC; finals use median reruns)
+
+- overall kernel leaderboard: rank 40 of 1612
+- muse_decode_layer: 2.2058x vs SGLang, rank 40 of 989 -> kernels/muse_decode_layer.py
+- muse_moe_w4a16: 2.4015x, rank 41 of 1122 -> kernels/muse_moe_w4a16.py
+- muse_bf16_proj: 1.5502x, rank 75 of 1401 -> kernels/muse_bf16_proj.py
+- muse_prefill_layer: 1.8167x, rank 34 of 648 -> kernels/muse_prefill_layer.py (vjeux's file, unchanged)
+- muse_attention_decode: 2.6530x, rank 46 of 1077 -> kernels/muse_attention_decode.py (vjeux's file, unchanged)
+
+## Files
+
+- [README.md](README.md): overview, results table, what each file changes, credits
+- [RESULTS.md](RESULTS.md): per-shape SGLang time, our time, speedup for every scored shape
+- [results.json](results.json): the same, machine-readable, with SHA-256 per kernel file and judge job ids
+- [docs/H200_MEASURED_FACTS.md](docs/H200_MEASURED_FACTS.md): measured H200 bandwidth by size, L2 write rate, judge mechanics and noise, what bounds each kernel
+- [docs/NEGATIVE_RESULTS.md](docs/NEGATIVE_RESULTS.md): ideas built, measured and dropped, with numbers and reasons
+- [timing_kit/](timing_kit/): paired cold-L2 CUDA-graph A/B/A timing harness (8 captures, random memory offsets, capture-level CIs, A/A control)
+- [NOTICE](NOTICE): credits (vjeux, Nathen Fernandes, Matsvei / kernarc 'matvey')
+
+## Key techniques
+
+- KPERM3 (muse_moe_w4a16, muse_decode_layer): lossless permutation of NVFP4 codes along K so one scale pair serves four 16-wide K steps; no register spill; judge +2.6..+3.9% on the 16-32-token loads.
+- Exact FP32 router fused into the pooler kernel at T <= 8 (muse_decode_layer), pinned so every prepare uses it.
+- vjeux's lossless 12-bit BF16 weight format + custom WGMMA O-projection kernels (FP32 accumulation) + Nathen Fernandes' small-M routes (muse_bf16_proj).
+- Per-thread CUDA-context bind in kernel_fn and deepcopy-safe state holders (each copied state owns its weights).
